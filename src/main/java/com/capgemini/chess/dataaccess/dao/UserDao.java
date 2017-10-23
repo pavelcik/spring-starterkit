@@ -11,6 +11,7 @@ import com.capgemini.chess.dataaccess.mappers.UserMapper;
 
 public class UserDao {
 	
+	private static final String nameValidator = "[a-zA-Z]+";
 	
 	public UserDao() {
 		addDummyUsers();
@@ -27,6 +28,21 @@ public class UserDao {
 		List<UserEntity> usersById = USERS.stream().filter(u->u.getId().equals(id)).collect(Collectors.toList());
 		return UserMapper.getUserDtoFromUserEntity(usersById);
 	}
+	
+	public List modifyUserList() {
+		///??????????????????????????
+		
+		USERS.forEach(u->u.setName(u.getName()));
+		return UserMapper.getUserDtoFromUserEntity(USERS);
+	}
+	
+	public boolean validateUserFields() {
+		return(USERS.forEach(u->u.getName().matches(nameValidator)));
+		
+	}
+	
+	
+	
 	
 	private void addDummyUsers() {
 		USERS.add(new UserEntity("marco1","marco1@email.com","Kotek123","Marco","Tutti","I love Italy and I love chess.","Don't be afraid to dream..."));
