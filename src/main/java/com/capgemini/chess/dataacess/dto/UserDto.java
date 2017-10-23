@@ -1,7 +1,6 @@
-package com.capgemini.chess.dataaccess.entities;
+package com.capgemini.chess.dataacess.dto;
 
-public class UserEntity {
-
+public class UserDto {
 	private String id;
 	private String email;
 	private String password;
@@ -10,8 +9,10 @@ public class UserEntity {
 	private String about_me;
 	private String life_motto;
 
-	
-	public UserEntity(String id, String email, String password, String name, String surname, String about_me,
+	public UserDto() {
+		
+	}
+	public UserDto(String id, String email, String password, String name, String surname, String about_me,
 			String life_motto) {
 		super();
 		this.id = id;
@@ -22,12 +23,6 @@ public class UserEntity {
 		this.about_me = about_me;
 		this.life_motto = life_motto;
 	}
-
-	public UserEntity() {
-		// TODO Auto-generated constructor stub
-	}
-
-	
 
 	public String getAbout_me() {
 		return about_me;
@@ -84,5 +79,4 @@ public class UserEntity {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-
 }
