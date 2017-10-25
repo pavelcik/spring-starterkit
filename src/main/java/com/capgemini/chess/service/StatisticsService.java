@@ -55,11 +55,11 @@ public StatisticsDto generateStatsForUser(String id) {
 
 public  int findUserPosition(String id) {
 	   
-	 sorted = userdao.getUSERS().stream().sorted((u1,u2)->Integer.compare(u1.getLevel().getValue(),u2.getLevel().getValue()))
+	 sorted = userdao.getUSERS().stream().sorted((u1,u2)->Integer.compare(u2.getLevel().getValue(),u1.getLevel().getValue()))
 			 .collect(Collectors.toList());
 	return IntStream.range(0, sorted.size())
 	    .filter(userID->sorted.get(userID).getId().equals(id))
-	    .findFirst().getAsInt();
+	    .findFirst().getAsInt()+1;
 	    
 	
 		

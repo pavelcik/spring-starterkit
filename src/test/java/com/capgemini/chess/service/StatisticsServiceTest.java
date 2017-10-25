@@ -72,7 +72,38 @@ public void FindUserPositionTest() {
 		String id = "debbie";
 		
 		//when
-		System.out.println(service.findUserPosition(id));
+		service.findUserPosition(id);
 	
+		//then
+		assertEquals(service.findUserPosition(id), 1);
 }	
+	@Test
+	public void FindUserWrongPositionTest() {
+			
+			//given
+			
+			String id = "marco1";
+			
+			//when
+			service.findUserPosition(id);
+		
+			//then
+			assertNotEquals(service.findUserPosition(id), 1);
+	
+}
+	
+	@Test
+	public void FindUserLastPositionTest() {
+			
+			//given
+			
+			String id = "marco1";
+			
+			//when
+			service.findUserPosition(id);
+		
+			//then
+			assertEquals(service.findUserPosition(id), 6);
+	
+}
 }
