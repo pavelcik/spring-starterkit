@@ -2,18 +2,14 @@ package com.capgemini.chess.dataaccess.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Component;
 
 import com.capgemini.chess.dataaccess.entities.UserEntity;
-import com.capgemini.chess.dataaccess.mappers.UserMapper;
-import com.capgemini.chess.dataacess.dto.UserDto;
+import com.capgemini.chess.enums.Level;
+
 @Component
 public class UserDao {
-
-	private static final String nameValidator = "[a-zA-Z]+";
 
 	public UserDao() {
 		addDummyUsers();
@@ -27,53 +23,21 @@ public class UserDao {
 		return USERS;
 	}
 
-
-
-
-
-	public void setUSERS(List<UserEntity> uSERS) {
-		USERS = uSERS;
-	}
-
-
-
-
-
-	public UserEntity findById(String id) {
-		return USERS.stream().filter(u -> u.getId().equals(id)).findFirst().get();
-	}
-
-
-	
-	
-	
-	public UserDto update(UserDto updatedUser) {
-		UserEntity updatedUserEntity = UserMapper.getUserEntityFromUserDto(updatedUser);
-		UserEntity currentUserEntity = findById(updatedUser.getId());
-		USERS.set(USERS.indexOf(currentUserEntity), updatedUserEntity);
-		return UserMapper.getUserDtoFromUserEntity(updatedUserEntity);
-	}
-	
-	
-
-
-	public boolean validateUserFieldsName(UserDto user) {
-		return USERS.stream().anyMatch(u-> u.getName().matches(nameValidator));
-	}
-
 	private void addDummyUsers() {
 		USERS.add(new UserEntity("marco1", "marco1@email.com", "Kotek123", "Marco", "Tutti",
-				"I love Italy and I love chess.", "Don't be afraid to dream..."));
+				"I love Italy and I love chess.", "Don't be afraid to dream...",20L,30L,50L,40L,200L,Level.getLevelByValue(1)));
 		USERS.add(new UserEntity("carol1", "carol1@email.com", "Carol123", "Carol", "Hastings",
-				"I am from America and I like dogs.", "Keep working!"));
+				"I am from America and I like dogs.", "Keep working!",345L,124L,57L,164L,6750L,Level.EXPERIENCED_MIDDLEBORW));
 		USERS.add(new UserEntity("anthony12_big", "crazyanthony@email.com", "vivalafiesta1", "Anthony", "James",
-				"I have two cats.", "Spaghetti is everything..."));
+				"I have two cats.", "Spaghetti is everything...",410L,80L,120L,210L,602L,Level.BEGINNER));
 		USERS.add(new UserEntity("debbie", "debbie.michales@email.com", "Password12", "Debbie", "Michaels",
-				"Mother of two from Canada.", "Find your goal in life and you will be happy..."));
+				"Mother of two from Canada.", "Find your goal in life and you will be happy...",6820,4020,480,2320,86750,Level.CHUCK_NORRIS_OF_CHESS));
 		USERS.add(new UserEntity("joseph", "joseph111@email.com", "Qwerty123", "Joseph", "Saint", "Just a regular guy.",
-				"Dream big , not small..."));
+				"Dream big , not small...",1200,200,1000,700,10000,Level.ADVANCED));
 		USERS.add(new UserEntity("eddie", "eddiefreddie@email.com", "Password12345", "Eddie", "Smith",
-				"Chess champion in '09", "Chess>life..."));
+				"Chess champion in '09", "Chess>life...",150,30,50,40,350,Level.WEAKLING));
 	}
+	
+	
 
 }

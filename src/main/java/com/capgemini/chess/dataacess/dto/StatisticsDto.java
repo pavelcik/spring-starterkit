@@ -9,14 +9,34 @@ public class StatisticsDto {
 	private long gamesDrown;
 	private long points;
 	private Level level;
+	private String name;
+	private String surname;
+	private String id;
 	
 	
 	
 	
 	
+	public StatisticsDto(long gamesPlayed, long gamesWon, long gamesLost, long gamesDrown, long points, Level level,
+			String name, String surname, String id) {
+		super();
+		this.gamesPlayed = gamesPlayed;
+		this.gamesWon = gamesWon;
+		this.gamesLost = gamesLost;
+		this.gamesDrown = gamesDrown;
+		this.points = points;
+		this.level = level;
+		this.name = name;
+		this.surname = surname;
+		this.id = id;
+	}
+
+
 	public StatisticsDto() {
 		super();
 	}
+	
+	
 	public StatisticsDto(long gamesPlayed, long gamesWon, long gamesLost, long gamesDrown, long points, Level level) {
 		super();
 		this.gamesPlayed = gamesPlayed;
