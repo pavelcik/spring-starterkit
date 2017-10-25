@@ -23,7 +23,7 @@ public enum Level {
 	private final int pointsRequired;
     private final int gamesRequired;
     private final double winsRequired;
-
+    
     Level(int value, int pointsRequired, int gamesRequired,
     		double winsRequired) {
     	this.value = value;

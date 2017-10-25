@@ -3,12 +3,14 @@ package com.capgemini.chess.dataaccess.mappers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Component;
+
 import com.capgemini.chess.dataaccess.entities.UserEntity;
 import com.capgemini.chess.dataacess.dto.UserDto;
-
+@Component
 public class UserMapper {
 
-	public static UserDto getUserDtoFromUserEntity(UserEntity userEntity) {
+	public static  UserDto getUserDtoFromUserEntity(UserEntity userEntity) {
 		UserDto userDto = null;
 		if(userEntity !=null) {
 			userDto = new UserDto();
