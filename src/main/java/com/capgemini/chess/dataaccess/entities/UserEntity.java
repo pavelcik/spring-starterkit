@@ -9,7 +9,7 @@ public class UserEntity {
 	private String password;
 	private String name;
 	private String surname;
-	private String about_me;
+	private String aboutMe;
 	private String life_motto;
 	
 	private long gamesPlayed;
@@ -77,7 +77,7 @@ public class UserEntity {
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
-		this.about_me = about_me;
+		this.aboutMe = aboutMe;
 		this.life_motto = life_motto;
 	}
 
@@ -123,11 +123,11 @@ public class UserEntity {
 	}
 
 	public String getAbout_me() {
-		return about_me;
+		return aboutMe;
 	}
 
 	public void setAbout_me(String about_me) {
-		this.about_me = about_me;
+		this.aboutMe = aboutMe;
 	}
 
 	public String getLife_motto() {

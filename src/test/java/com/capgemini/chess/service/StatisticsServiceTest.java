@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.capgemini.chess.ChessApplication;
 import com.capgemini.chess.dataaccess.dao.UserDao;
 import com.capgemini.chess.dataaccess.entities.UserEntity;
+import com.capgemini.chess.dataacess.dto.StatisticsDto;
 import com.capgemini.chess.enums.Level;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,75 +25,77 @@ public class StatisticsServiceTest {
 	StatisticsService service;
 	@Autowired
 	UserDao userdao;
-	
+
 	@Test
 	public void GetStatisticInformationByLevelTest() {
-		
-		//given
-		
+
+		// given
+
 		String id = "debbie";
-		
-		//when
+
+		// when
 		service.listInformationAboutUser(id);
-		
-		//then
+
+		// then
 		assertEquals(service.listInformationAboutUser(id).getLevel(), userdao.getUSERS().get(3).getLevel());
 	}
-	
+
 	@Test
-public void GetStatisticInformationByGamesPlayeTest() {
-		
-		//given
-		
+	public void GetStatisticInformationByGamesPlayeTest() {
+
+		// given
+
 		String id = "debbie";
-		
-		//when
-		service.listInformationAboutUser(id);
-		
-		//then
-		assertNotEquals(service.listInformationAboutUser(id).getGamesPlayed(), userdao.getUSERS().get(2).getGamesPlayed());
-	
-}
+
+		// when
+		StatisticsDto statistic = service.listInformationAboutUser(id);
+
+		// then
+		assertNotEquals(statistic.getGamesPlayed(),
+				userdao.getUSERS().get(2).getGamesPlayed());
+
+	}
+
 	@Test
-public void FindUserPositionTest() {
-		
-		//given
-		
+	public void FindUserPositionTest() {
+
+		// given
+
 		String id = "debbie";
-		
-		//when
+
+		// when
 		service.findUserPosition(id);
-	
-		//then
+
+		// then
 		assertEquals(service.findUserPosition(id), 1);
-}	
+	}
+
 	@Test
 	public void FindUserWrongPositionTest() {
-			
-			//given
-			
-			String id = "marco1";
-			
-			//when
-			service.findUserPosition(id);
-		
-			//then
-			assertNotEquals(service.findUserPosition(id), 1);
-	
-}
-	
+
+		// given
+
+		String id = "marco1";
+
+		// when
+		service.findUserPosition(id);
+
+		// then
+		assertNotEquals(service.findUserPosition(id), 1);
+
+	}
+
 	@Test
 	public void FindUserLastPositionTest() {
-			
-			//given
-			
-			String id = "marco1";
-			
-			//when
-			service.findUserPosition(id);
-		
-			//then
-			assertEquals(service.findUserPosition(id), 6);
-	
-}
+
+		// given
+		String id = "marco1";
+
+		// when
+		service.findUserPosition(id);
+
+		// then
+		assertEquals(service.findUserPosition(id), 6);
+
+	}
 }

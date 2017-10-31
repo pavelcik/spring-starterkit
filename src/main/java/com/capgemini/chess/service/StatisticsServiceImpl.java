@@ -16,11 +16,10 @@ import com.capgemini.chess.enums.Level;
 
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
-	private List<UserEntity> statisticsOfUser = new ArrayList<>();
-	private List<UserEntity> sorted = new ArrayList<>();
+	
 	@Autowired
 	private UserDao userdao;
-
+	private List<UserEntity> sorted = new ArrayList<>();
 	public StatisticsServiceImpl() {
 
 	}
@@ -31,6 +30,8 @@ public class StatisticsServiceImpl implements StatisticsService {
 	}
 
 	public StatisticsDto generateStatsForUser(String id) {
+		List<UserEntity> statisticsOfUser = new ArrayList<>();
+		
 		for (int i = 0; i < userdao.getUSERS().size(); i++) {
 			if (userdao.getUSERS().get(i).getId() == id) {
 				statisticsOfUser.add(userdao.getUSERS().get(i));
@@ -41,6 +42,8 @@ public class StatisticsServiceImpl implements StatisticsService {
 
 	public int findUserPosition(String id) {
 
+		
+		
 		sorted = userdao.getUSERS().stream()
 				.sorted((u1, u2) -> Integer.compare(u2.getLevel().getValue(), u1.getLevel().getValue()))
 				.collect(Collectors.toList());
