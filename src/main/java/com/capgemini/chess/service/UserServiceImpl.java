@@ -26,13 +26,13 @@ public class UserServiceImpl implements UserService {
 		return true;
 	}
 
-	public UserEntity findById(String id) {
-		return userdao.getUSERS().stream().filter(u -> u.getId().equals(id)).findFirst().get();
+	public UserDto findById(String id) {
+		return UserMapper.getUserDtoFromUserEntity(userdao.getUSERS().stream().filter(u -> u.getId().equals(id)).findFirst().get());
 	}
 
 	public UserDto update(UserDto updatedUser) {
 		UserEntity updatedUserEntity = UserMapper.getUserEntityFromUserDto(updatedUser);
-		UserEntity currentUserEntity = findById(updatedUser.getId());
+		UserEntity currentUserEntity = UserMapper.getUserEntityFromUserDto(findById(updatedUser.getId()));
 		userdao.getUSERS().set(userdao.getUSERS().indexOf(currentUserEntity), updatedUserEntity);
 		return UserMapper.getUserDtoFromUserEntity(updatedUserEntity);
 	}

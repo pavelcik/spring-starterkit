@@ -1,5 +1,8 @@
 package com.capgemini.chess.dataacess.dto;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserDto {
 	private String id;
 	private String email;

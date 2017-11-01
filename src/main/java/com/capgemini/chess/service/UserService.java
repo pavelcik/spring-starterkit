@@ -10,7 +10,7 @@ import com.capgemini.chess.exceptions.InvalidNameEnteredException;
 public interface UserService {
 	public boolean validateUserFieldsName(String name) throws InvalidNameEnteredException;
 
-	public UserEntity findById(String id);
+	public UserDto findById(String id);
 	public UserDto update(UserDto updatedUser);
 	public UserDto changeUserInfo(UserDto userdto) throws InvalidNameEnteredException;
 

@@ -33,7 +33,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 		List<UserEntity> statisticsOfUser = new ArrayList<>();
 		
 		for (int i = 0; i < userdao.getUSERS().size(); i++) {
-			if (userdao.getUSERS().get(i).getId() == id) {
+			if (userdao.getUSERS().get(i).getId().equalsIgnoreCase(id)) {
 				statisticsOfUser.add(userdao.getUSERS().get(i));
 			}
 		}
