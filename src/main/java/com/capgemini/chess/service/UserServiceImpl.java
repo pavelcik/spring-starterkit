@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public UserDto update(UserDto updatedUser) {
+		
 		UserEntity updatedUserEntity = UserMapper.getUserEntityFromUserDto(updatedUser);
 		UserEntity currentUserEntity = UserMapper.getUserEntityFromUserDto(findById(updatedUser.getId()));
 		userdao.getUSERS().set(userdao.getUSERS().indexOf(currentUserEntity), updatedUserEntity);
@@ -44,6 +45,13 @@ public class UserServiceImpl implements UserService {
 		validateUserFieldsName(userdto.getName());
 
 		return userdto;
+	}
+
+	@Override
+	public UserDto addNewUser(String id, String email,String password,String name,String surname,String about_me,String life_motto) {
+		UserEntity newUserEntity = new UserEntity(id,email,password,name,surname,about_me,life_motto);
+		userdao.getUSERS().add(newUserEntity);
+		return UserMapper.getUserDtoFromUserEntity(userdao.getUSERS().get(userdao.getUSERS().size()-1));
 	}
 
 }

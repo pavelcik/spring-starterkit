@@ -25,7 +25,7 @@ public class UserDao {
 
 	private void addDummyUsers() {
 		USERS.add(new UserEntity("marco1", "marco1@email.com", "Kotek123", "Marco", "Tutti",
-				"I love Italy and I love chess.", "Don't be afraid to dream...",20L,30L,50L,40L,200L,Level.getLevelByValue(1)));
+				"I love Italy and I love chess.", "Don't be afraid to dream...",120L,30L,50L,40L,200L,Level.NEWBIE));
 		USERS.add(new UserEntity("carol1", "carol1@email.com", "Carol123", "Carol", "Hastings",
 				"I am from America and I like dogs.", "Keep working!",345L,124L,57L,164L,6750L,Level.EXPERIENCED_MIDDLEBORW));
 		USERS.add(new UserEntity("anthony12_big", "crazyanthony@email.com", "vivalafiesta1", "Anthony", "James",
